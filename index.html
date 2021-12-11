@@ -1,0 +1,64 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center" style="background-image:url(https://www.wallpaperbetter.com/wallpaper/897/576/61/mars-planet-space-1080P-wallpaper.jpg); background-size:100%; height:100%")>
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+    </div>
+    <div class="container">
+        <h2>Latest Mars News</h2>
+        <h4 style="color:cadetblue">NASA's Mars Rover Drivers Need Your Help</h4>
+        <p>Using an online tool to label Martian terrain types, you can train an artificial intelligence algorithm that could improve the way engineers guide the Curiosity rover.</p>
+    </div>
+
+    <div class="container">
+      <div class='row'>
+        <div class="col-md-6">
+        <h3>Featured Mars Image</h3>
+        <img src="Images/mars2.jpg" style="max-width:100%; max-height: auto;" alt="mars image">
+        
+        </div>
+        <div class="col-md-6">
+          <div class="card" style="width: 20rem;">
+            <div class="card-body text-white bg-dark">
+            </div>
+          </div>
+          <!-- Table -->
+          <br>
+          <h5>Mars Facts</h5>
+          <table>{{scrape_mars.DF}}</table>
+
+        </div>
+      </div>
+    </div><!---container for image and table closed-->
+    <div class='col-md-12'>
+      <h3 style="padding-top:30px; text-align: center;"> Mars Hemispheres </h3>
+      <hr>
+      <div class="col-md-3">
+        <div id="images">
+        <div class="card text-white bg-dark" style="margin: 30px;">
+          <img src="Images/h1.jpg" class="imageNav-photo" title="Cerberus Hemispheres Enhanced">
+          <img src="Images/h2.jpg" class="imageNav-photo" title="Schiaparelli Hemisphere Enhanced">
+          <img src="Images/h3.jpg" class="imageNav-photo" title="Syrtis Major Hemisphere Enhanced">
+          <img src="Images/h4.jpg" class="imageNav-photo" title="Valles Marineris Hemisphere Enhanced">
+
+
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+
+  </div> <!---body->container closed-->
+</body>
+</html>
