@@ -1,19 +1,27 @@
-from splinter import Browser
+from splinter import Browser, browser
 from bs4 import BeautifulSoup as bs
-import time
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
-
+import datetime as dt
 
 # Set up Splinter
 def scrape_all():
-
+   
      executable_path = {'executable_path': ChromeDriverManager().install()}
      browser = Browser('chrome', **executable_path, headless=False)
-     title_mars,news=mars_news(browser)
-     title_featured,image=featured_image(browser)
-     title_Mars,Facts=Mars_Facts(browser)
-     title_Hemispheres=Hemispheres(browser)
+     news_title,news_p=mars_news(browser)
+
+     mars_data={
+         "newsTitle":news_title,
+         "newsParagraph":news_p,
+         "featureImage":featured_image(browser),
+         "facts":Mars_Facts(browser),
+         "Hemispheres":Hemispheres(browser),
+         "lastupdated":dt.datetime.now()
+     }
+     browser.quit()
+     return mars_data
+     
 
 def mars_news(browser):
 
@@ -23,7 +31,7 @@ def mars_news(browser):
     html = browser.html
     news_soup = bs(html, 'html.parser')
     slide_elem = news_soup.select_one('div.list_text')
-    title=slide_elem.find('div', class_='content_title')
+    #title=slide_elem.find('div', class_='content_title')
     news_title=slide_elem.find('div', class_='content_title').get_text()
     news_p=slide_elem.find('div', class_="article_teaser_body").get_text()
     return news_title,news_p
@@ -40,10 +48,17 @@ def featured_image(browser):
     return img_url_a
 
 def Mars_Facts(browser):
-    DataF=pd.read_html('https://galaxyfacts-mars.com/')[0]
-    DataF.rename(columns = {0:'Description',1:'Mars',2:'Earth'}, inplace = True)
-    DF=DataF.set_index('Description')
-    return DF.to_html()
+    url='https://galaxyfacts-mars.com/'
+    browser.visit(url)
+
+    html=browser.html
+    fact_soup=bs(html,'html.parser')
+    factslocation=fact_soup.find('div',class_="diagram mt-4")
+    factTable=factslocation.find('table')
+    facts=""
+    facts +=str(factTable)
+    return facts
+
 
 def Hemispheres(browser):
     url = 'https://marshemispheres.com/'
@@ -58,5 +73,9 @@ def Hemispheres(browser):
         data["title"] = browser.find_by_css("h2.title").text
         hemisphere_image_urls.append(data)
         browser.back()
-        hemisphere_image_urls
-    return browser.quit()
+        
+    return hemisphere_image_urls
+
+
+if __name__=="__main__":
+    print(scrape_all())
