@@ -1,3 +1,5 @@
 # web-scraping-challenge
+I did lots of update for this assignment, I'm proud of my work. I missed the feature_image since the url in my mongo database is not valid anymore, except for this, I finally made everything works! Thank you
+
 I know I didn't get this assignment done very well, it's extremly hard for me. I cannot get my app.py run with building the mongo database, the scrape_mars data didn't import correctly I guess, that's why the html couldn't get the table there. I tried all resources I get access to, after researching online, I looked for help, the slack assistant started to being mean to me, they said "You NEED to use anaconda prompt, Gitbash CANNOT run this assignment", which my instructor never teach us to use anaconda, we always using gitbash. Today I got my instrutor and TA to work with me to solve the issue, they said i was good to go, but still no. I don't know what else i can do now. My tutor time is next Wednesday, I may update this assignment later. Also could you please explain this "Screenshots of your final application"to me? What final application?
 Thanks 
