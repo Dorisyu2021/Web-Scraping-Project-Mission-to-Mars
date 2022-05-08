@@ -20,6 +20,8 @@ Step 2 - MongoDB and Flask Application
 Use MongoDB with Flask templating to create a new HTML page that displays all of the information that was scraped from the URLs above.
 
 Some examples:
+![1!](mars1.png)
+![2!](mars2.png)
 
 
 I did lots of update for this assignment, I'm proud of my work. I missed the feature_image since the url in my mongo database is not valid anymore, except for this, I finally made everything works!
